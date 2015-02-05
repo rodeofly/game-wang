@@ -53,11 +53,11 @@ $ ->
   # Ecran de veille
   ####################################################################################################    
   $( "#bubble" ).html( "Press Game A or B button ! " )
-  go = interval 1500, -> $( "#bubble" ).dialog "open"
+  blink = interval 1500, -> $( "#bubble" ).dialog "open"
   
   go_veille = () ->
     $( "#bubble" ).html( "Press Game A or B button ! " )
-    go = interval 1500, -> $( "#bubble" ).dialog "open"
+    blink = interval 1500, -> $( "#bubble" ).dialog "open"
   ####################################################################################################
   # Déplacements gauche & droite 
   ####################################################################################################
@@ -184,7 +184,7 @@ $ ->
 
   
   gogame = () ->
-    clearInterval go
+    clearInterval blink
     score = 0
     $( "#score" ).html("#{score}")
     bits = 1
