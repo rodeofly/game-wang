@@ -99,7 +99,9 @@ $ ->
         binary = get_binary()
         if n is parseInt binary, 2
           ####################################################################################################
-          document.getElementById('win-sound').play()
+          audioElement = document.getElementById('win-sound')
+          audioElement.currentTime=0
+          audioElement.play()
           ####################################################################################################
           $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
           score = score + n
@@ -127,7 +129,9 @@ $ ->
                   i = i + 1
         else
           ####################################################################################################
-          document.getElementById('fail-sound').play()
+          audioElement = document.getElementById('fail-sound')
+          audioElement.currentTime=0
+          audioElement.play()
           ####################################################################################################
           $( "#bubble" ).html("Raah ! #{binary} is not #{n}<br>hint:#{n.toString(2)}").dialog "open"
           lifes = lifes - 1
@@ -136,7 +140,9 @@ $ ->
             alert "game over"
             $( ".bridge-tile").remove()
       else
-        document.getElementById('toggle-sound').play()
+        audioElement = document.getElementById('toggle-sound')
+        audioElement.currentTime=0
+        audioElement.play()
         $( "#bridge#{cursor}" ).data "checked", not $( "#bridge#{cursor}" ).data("checked")
         $( "#bridge#{cursor} input" ).prop 'checked', (i, v) -> !v
         $( "#checked-debug").text( "checked:#{$( "#bridge#{cursor}" ).data( "checked" )}" ) if debug

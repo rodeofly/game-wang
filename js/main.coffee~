@@ -109,7 +109,7 @@ $ ->
           new_bridge(bits)
           n = Math.floor Math.pow(2,bits) * Math.random()
           $( "#bubble-number" ).html("#{n}")
-          i=0
+          i=1
           delay 500, -> 
               $( "#hey" ).css
                 "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
@@ -127,7 +127,9 @@ $ ->
                   i = i + 1
         else
           ####################################################################################################
-          document.getElementById('fail-sound').play()
+          audioElement = document.getElementById('fail-sound')
+          audioElement.currentTime=0
+          audioElement.play()
           ####################################################################################################
           $( "#bubble" ).html("Raah ! #{binary} is not #{n}<br>hint:#{n.toString(2)}").dialog "open"
           lifes = lifes - 1
@@ -136,7 +138,9 @@ $ ->
             alert "game over"
             $( ".bridge-tile").remove()
       else
-        document.getElementById('toggle-sound').play()
+        audioElement = document.getElementById('toggle-sound')
+        audioElement.currentTime=0
+        audioElement.play()
         $( "#bridge#{cursor}" ).data "checked", not $( "#bridge#{cursor}" ).data("checked")
         $( "#bridge#{cursor} input" ).prop 'checked', (i, v) -> !v
         $( "#checked-debug").text( "checked:#{$( "#bridge#{cursor}" ).data( "checked" )}" ) if debug

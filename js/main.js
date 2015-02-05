@@ -120,13 +120,15 @@
       return $("#bubble").dialog("open");
     };
     toggle = function() {
-      var binary, i;
+      var audioElement, binary, i;
       $("#bubble").dialog("close");
       switch (cursor) {
         case -1:
           binary = get_binary();
           if (n === parseInt(binary, 2)) {
-            document.getElementById('win-sound').play();
+            audioElement = document.getElementById('win-sound');
+            audioElement.currentTime = 0;
+            audioElement.play();
             $("#bubble").html("Yeah ! " + binary + " is " + n + " !").dialog("open");
             score = score + n;
             $("#score").html("" + score);
@@ -158,7 +160,9 @@
               });
             });
           } else {
-            document.getElementById('fail-sound').play();
+            audioElement = document.getElementById('fail-sound');
+            audioElement.currentTime = 0;
+            audioElement.play();
             $("#bubble").html("Raah ! " + binary + " is not " + n + "<br>hint:" + (n.toString(2))).dialog("open");
             lifes = lifes - 1;
             $("#lifes img:first").remove();
@@ -169,7 +173,9 @@
           }
           break;
         default:
-          document.getElementById('toggle-sound').play();
+          audioElement = document.getElementById('toggle-sound');
+          audioElement.currentTime = 0;
+          audioElement.play();
           $("#bridge" + cursor).data("checked", !$("#bridge" + cursor).data("checked"));
           $("#bridge" + cursor + " input").prop('checked', function(i, v) {
             return !v;
