@@ -97,7 +97,7 @@ textarea {
 
 body:after{
     display:none;
-    content: url('../img/gamewatch2.jpg') url(../img/tile.png) url(../img/check.png) url(img04.png) url('../img/wang-left0.png') url('../img/wang-left1.png') url('../img/wang-right0.png') url('../img/wang-right1.png') url('../img/Game&WatchSymbol0.svg') url('../img/Game&WatchSymbol0.svg')  
+    content: url('../img/gamewatch2.jpg') url(../img/tile.png) url(../img/check.png) url('../img/wang-left0.png') url('../img/wang-left1.png') url('../img/wang-right0.png') url('../img/wang-right1.png') url('../img/Game&WatchSymbol0.svg') url('../img/Game&WatchSymbol1.svg')  
 }
 
 html, body, #gamewatch {
