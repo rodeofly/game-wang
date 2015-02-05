@@ -5,16 +5,20 @@ cursor = 0
 bits = 1
 lifes = 3
 score = 0
+randomize = false
 n = Math.floor Math.pow(2,bits) *Math.random()
 
 delay = (ms, func) -> setTimeout func, ms
 interval = (ms, func) -> setInterval func, ms
 # On Dom Ready !   
 $ ->
-  new_bridge = (tiles) ->
+  new_bridge = (tiles, randomize) ->
     for i in [tiles-1..0]
       weight = Math.pow(2, i)
-      cbc  = "<div id='bridge#{i}' class='bridge-tile' data-weight='#{weight}' data-checked='false'>#{weight}</div>"
+      r = ['false','true']
+      checked = if randomize then Math.floor(2*Math.random()) else 0
+      alert "rand=#{randomize}, #{r[checked]}" if debug
+      cbc  = "<div id='bridge#{i}' class='bridge-tile' data-weight='#{weight}' data-checked='#{r[checked]}'>#{weight}</div>"
       $( cbc )
         .css
           width : $( "#bridge" ).width() / tiles
@@ -45,6 +49,16 @@ $ ->
       my: "right bottom"
       at: "left middle"
       of: "#hey"
+  ####################################################################################################
+  # Ecran de veille
+  ####################################################################################################    
+  $( "#bubble" ).html( "Press Game A or B button ! " )
+  enveille = () -> $( "#bubble" ).dialog "open"
+  go_veille = interval 1500, -> enveille()
+  
+  go_veille = () ->
+    $( "#bubble" ).html( "Press Game A or B button ! " )
+    go_veille = interval 1500, -> enveille()    
   ####################################################################################################
   # Déplacements gauche & droite 
   ####################################################################################################
@@ -109,7 +123,7 @@ $ ->
           $( "#score" ).html("#{score}")
           bits = bits + 1
           $( ".bridge-tile" ).remove()
-          new_bridge(bits)
+          new_bridge(bits, randomize)
           n = Math.floor Math.pow(2,bits) * Math.random()
           $( "#bubble-number" ).html("#{n}")
           i=1
@@ -140,6 +154,7 @@ $ ->
           if not lifes
             alert "game over"
             $( ".bridge-tile").remove()
+            go_veille()
       else
         audioElement = document.getElementById('toggle-sound')
         audioElement.currentTime=0
@@ -154,8 +169,8 @@ $ ->
   $("#left-top").click -> is_marked()
   $("#right-top").click -> toggle()
   $("#right").click -> move("right")
+  $("#time").click -> alert "Patience mon jeune Padawan !"
   
-  $("#gameB, #time").click -> alert "Patience mon jeune Padawan !"
   ####################################################################################################
   # Post - Wang axiomes !
   #################################################################################################### 
@@ -168,9 +183,11 @@ $ ->
   # Game Start !
   ####################################################################################################    
 
-  $("#gameA").click ->
+  
+  gogame = () ->
     clearInterval go
     score = 0
+    $( "#score" ).html("#{score}")
     bits = 1
     lifes = 3
     n = Math.floor Math.pow(2,bits) * Math.random()
@@ -181,17 +198,17 @@ $ ->
     ####################################################################################################   
     $( "#lifes" ).empty()
     $( ".bridge-tile" ).remove()
-    new_bridge(bits)
+    new_bridge(bits,randomize)
     for i in [1..lifes]
       life = "<img class='life'>"
       $( "#lifes" ).append( life )
     $( "#bridge#{cursor}" ).append $( wang )
     $( "#bubble-number" ).text("#{n}").dialog "open"
   
-  ####################################################################################################
-  # Ecran de veille
-  ####################################################################################################    
-  $( "#bubble" ).html( "Press Game A button ! " )
-  enveille = () -> $( "#bubble" ).dialog "open"
-  go = interval 1500, -> enveille()
+  $("#gameA").click ->
+    randomize = false
+    gogame()
+  $("#gameB").click ->
+    randomize = true
+    gogame()
   
