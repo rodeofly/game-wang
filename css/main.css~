@@ -49,14 +49,14 @@ hr {
 
 /*
  * Remove the gap between audio, canvas, iframes,
- * ../img, videos and the bottom of their containers:
+ * img, videos and the bottom of their containers:
  * https://github.com/h5bp/html5-boilerplate/issues/440
  */
 
 audio,
 canvas,
 iframe,
-../img,
+img,
 svg,
 video {
     vertical-align: middle;
@@ -95,7 +95,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-
+body:after{
+    display:none;
+    content: url('../img/gamewatch2.jpg') url(../img/tile.png) url(../img/check.png) url(img04.png) url('../img/wang-left0.png') url('../img/wang-left1.png') url('../img/wang-right0.png') url('../img/wang-right1.png') 
+}
 
 html, body, #gamewatch {
   font-family: 'Chewy', cursive;
@@ -155,8 +158,7 @@ html, body, #gamewatch {
   right : 0%;
   width : 10vw;
   height: 10vw;
-  background : url('../img/Game&WatchSymbol0.svg');
-  background-size : 100%;
+  background : none
 }
 #bridge {
   position: absolute;
@@ -385,11 +387,11 @@ input[type=checkbox] {
     }
 
     tr,
-    ../img {
+    img {
         page-break-inside: avoid;
     }
 
-    ../img {
+    img {
         max-width: 100% !important;
     }
 
