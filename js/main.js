@@ -25,7 +25,7 @@
   };
 
   $(function() {
-    var enveille, get_binary, go_veille, gogame, is_marked, move, new_bridge, toggle;
+    var get_binary, go, go_veille, gogame, is_marked, move, new_bridge, toggle;
     new_bridge = function(tiles, randomize) {
       var cbc, checked, i, r, weight, _i, _ref, _results;
       _results = [];
@@ -73,16 +73,13 @@
       }
     });
     $("#bubble").html("Press Game A or B button ! ");
-    enveille = function() {
+    go = interval(1500, function() {
       return $("#bubble").dialog("open");
-    };
-    go_veille = interval(1500, function() {
-      return enveille();
     });
     go_veille = function() {
       $("#bubble").html("Press Game A or B button ! ");
-      return go_veille = interval(1500, function() {
-        return enveille();
+      return go = interval(1500, function() {
+        return $("#bubble").dialog("open");
       });
     };
     move = function(side) {
@@ -225,7 +222,7 @@
     });
     gogame = function() {
       var i, life, wang, _i;
-      clearInterval(go_veille);
+      clearInterval(go);
       score = 0;
       $("#score").html("" + score);
       bits = 1;
