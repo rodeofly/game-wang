@@ -155,8 +155,7 @@ html, body, #gamewatch {
   right : 0%;
   width : 10vw;
   height: 10vw;
-  background : url('../img/Game&WatchSymbol0.svg');
-  background-size : 100%;
+  background : none
 }
 #bridge {
   position: absolute;

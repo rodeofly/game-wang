@@ -28,7 +28,6 @@
         <audio id="toggle-sound" src="./sounds/toggle.wav" preload="auto"></audio>
         <audio id="win-sound" src="./sounds/win.wav" preload="auto"></audio>
         <audio id="fail-sound" src="./sounds/fail.wav" preload="auto"></audio>
-        <audio id="bell-sound" src="./sounds/bell.wav" preload="auto"></audio>
         <div id="menu">
           <div id="gameA"> </div>
           <div id="gameB"> </div>

@@ -8,6 +8,7 @@ score = 0
 n = Math.floor Math.pow(2,bits) *Math.random()
 
 delay = (ms, func) -> setTimeout func, ms
+interval = (ms, func) -> setInterval func, ms
 # On Dom Ready !   
 $ ->
   new_bridge = (tiles) ->
@@ -112,21 +113,21 @@ $ ->
           n = Math.floor Math.pow(2,bits) * Math.random()
           $( "#bubble-number" ).html("#{n}")
           i=1
-          delay 500, -> 
-              $( "#hey" ).css
+          ringdabell = () ->
+            i = i + 1
+            $( "#hey" ).css
                 "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
                 "background-size" : "100%"
-              i = i + 1
-              delay 500, -> 
-                $( "#hey" ).css
-                  "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
-                  "background-size" : "100%"
-                i = i + 1
-                delay 500, -> 
-                  $( "#hey" ).css
-                    "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
-                    "background-size" : "100%"
-                  i = i + 1
+            
+          ringgit = interval 50, -> 
+            ringdabell()
+            audioElement = document.getElementById('bell-sound')
+            audioElement.currentTime=0
+            audioElement.play()
+          delay 1000, -> 
+            clearInterval ringgit
+            $( "#hey" ).css
+              "background" : "none"
         else
           ####################################################################################################
           audioElement = document.getElementById('fail-sound')
@@ -168,6 +169,9 @@ $ ->
   ####################################################################################################    
 
   $("#gameA").click ->
+    clearInterval go
+    score = 0
+    $( "#score" ).html("#{score}")
     bits = 1
     lifes = 3
     n = Math.floor Math.pow(2,bits) * Math.random()
@@ -184,4 +188,11 @@ $ ->
       $( "#lifes" ).append( life )
     $( "#bridge#{cursor}" ).append $( wang )
     $( "#bubble-number" ).text("#{n}").dialog "open"
-
+  
+  ####################################################################################################
+  # Ecran de veille
+  ####################################################################################################    
+  $( "#bubble" ).html( "Press Game A button ! " )
+  enveille = () -> $( "#bubble" ).dialog "open"
+  go = interval 1500, -> enveille()
+  
