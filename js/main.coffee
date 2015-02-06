@@ -1,4 +1,5 @@
 ####################################################################################################
+# Variables Globales
 ####################################################################################################
 debug = false
 cursor = 0 
@@ -6,57 +7,62 @@ bits = 1
 lifes = 3
 score = 0
 randomize = false
-n = Math.floor Math.pow(2,bits) *Math.random()
-
+timer = false
+n = Math.floor Math.pow(2,bits) * Math.random()
+wang = "<div id='wang'></div>"
+####################################################################################################
+# Reecriture des fonctions setTimeOut et setInterval pour une utilisation simplifiee en coffeescript
+####################################################################################################
 delay = (ms, func) -> setTimeout func, ms
 interval = (ms, func) -> setInterval func, ms
-# On Dom Ready !   
-$ ->
-  new_bridge = (tiles, randomize) ->
+####################################################################################################
+# Construction du pont avec des chiffres activés ou non en fonction du jeu A ou B
+####################################################################################################
+new_bridge = (tiles, randomize) ->
+    r = ['false','true']
     for i in [tiles-1..0]
       weight = Math.pow(2, i)
-      r = ['false','true']
-      checked = if randomize then Math.floor(2*Math.random()) else 0
-      alert "rand=#{randomize}, #{r[checked]}" if debug
+      checked = if randomize then Math.floor 2*Math.random() else 0
       cbc  = "<div id='bridge#{i}' class='bridge-tile' data-weight='#{weight}' data-checked='#{r[checked]}'>#{weight}</div>"
-      $( cbc )
-        .css
-          width : $( "#bridge" ).width() / tiles
-          height : '100%'
-        .appendTo $( "#bridge" )
-        .show(1000)
-        
+      $( cbc ).appendTo( $( "#bridge" )).css
+        width : $( "#bridge" ).width() / tiles
+        height : '100%'      
+####################################################################################################
+# On Dom Ready !   
+####################################################################################################
+$ ->
+  $( "#bridge-1" ).append $( wang )
+  $( "#bubble" ).html( "Press Game A or B button !")
+  $( "#rules").html( "Emilio Posti doit additionner !<br>Il doit activer certains chiffres,<br>Puis valider le tout, en haut de son petit arbre !<br>Attention dans le jeu B...<br>Les chiffres sont validés au hasard.<br>Paré pour des additions...on the beat !?" )   
+  blink = interval 1500, -> $( "#bubble" ).dialog "open"     
   ####################################################################################################
   # Configuration des boites de dialogues
   ####################################################################################################
-  $( "#bubble, #bubble-number" ).dialog
+  $( "#bubble" ).dialog
     autoOpen: false
-    height : 50
     width: 'auto'
-    show:
-      effect: "blind"
-      duration: 100
     hide:
       effect: "explode"
       duration: 100
     position: 
-      my: "middle top"
-      at: "middle top"
+      my: "center bottom"
+      at: "center bottom"
       of: "#ecran"
     open: (event, ui) -> setTimeout("$('#bubble').dialog('close')",2000)
   $( "#bubble-number" ).dialog
+    autoOpen: false
+    height : 50
+    width: 'auto'
     position: 
       my: "right bottom"
       at: "left middle"
       of: "#hey"
   ####################################################################################################
   # Ecran de veille
-  ####################################################################################################    
-  $( "#bubble" ).html( "Press Game A or B button ! " )
-  blink = interval 1500, -> $( "#bubble" ).dialog "open"
-  
+  ####################################################################################################  
   go_veille = () ->
     $( "#bubble" ).html( "Press Game A or B button ! " )
+    $( "#rules").html( "Emilio Posti doit additionner.<br>Il doit activer certains chiffres,<br>Puis valider le tout, en haut de son petit arbre !<br>Attention dans le jeu B...<br>Les chiffres sont validés au hasard.<br>Paré pour des additions...on the beat !?" )
     blink = interval 1500, -> $( "#bubble" ).dialog "open"
   ####################################################################################################
   # Déplacements gauche & droite 
@@ -117,21 +123,20 @@ $ ->
           audioElement.currentTime=0
           audioElement.play()
           ####################################################################################################
-          $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
           score = score + n
-          $( "#score" ).html("#{score}")
           bits = bits + 1
-          $( ".bridge-tile" ).remove()
-          new_bridge(bits, randomize)
           n = Math.floor Math.pow(2,bits) * Math.random()
           $( "#bubble-number" ).html("#{n}")
+          $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
+          $( "#score" ).html("#{score}")
+          $( ".bridge-tile" ).remove()
+          new_bridge(bits, randomize)
           i=1
           ringdabell = () ->
             i = i + 1
             $( "#hey" ).css
                 "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
-                "background-size" : "100%"
-            
+                "background-size" : "100%"     
           ringgit = interval 50, -> 
             ringdabell()
             audioElement = document.getElementById('bell-sound')
@@ -184,18 +189,19 @@ $ ->
 
   
   gogame = () ->
-    clearInterval blink
     score = 0
-    $( "#score" ).html("#{score}")
-    bits = 1
     lifes = 3
+    bits = 1
     n = Math.floor Math.pow(2,bits) * Math.random()
+    clearInterval blink
+    $( "#lifes" ).empty()
+    $( "#rules").html( "")
+    $( "#score" ).html("#{score}") 
     $( "#wang" ).remove()
     wang = "<div id='wang'></div>"
     ####################################################################################################
     # Configuration des ponderations de bit
     ####################################################################################################   
-    $( "#lifes" ).empty()
     $( ".bridge-tile" ).remove()
     new_bridge(bits,randomize)
     for i in [1..lifes]

@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
+        <title>Game&Wang - Emilio Posti on the bit !</title>
+        <meta name="description" content="Un jeu de conversion binaire utilisant les axiomes de Post, actualisé par Wang !">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="wang-touch-icon" href="wang-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
@@ -24,11 +24,11 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <audio id="music" src="http://freedownloads.last.fm/download/295028163/Closer%2B%2528Bitpop%2BMix%2529.mp3" preload="auto" controls loop autoplay><p>Your browser does not support the audio element.</p></audio>
-        <audio id="toggle-sound" src="./sounds/toggle.wav" preload="auto"></audio>
-        <audio id="win-sound" src="./sounds/win.wav" preload="auto"></audio>
-        <audio id="fail-sound" src="./sounds/fail.wav" preload="auto"></audio>
-        <audio id="bell-sound" src="./sounds/bell.wav" preload="auto"></audio>
+        <audio id="music" src="http://freedownloads.last.fm/download/295028163/Closer%2B%2528Bitpop%2BMix%2529.mp3" preload="auto" autoplay loop controls><p>Your browser does not support the audio element.</p></audio>
+        <audio id="toggle-sound" src="./sounds/toggle.ogg" preload="auto"></audio>
+        <audio id="win-sound" src="./sounds/win.ogg" preload="auto"></audio>
+        <audio id="fail-sound" src="./sounds/fail.ogg" preload="auto"></audio>
+        <audio id="bell-sound" src="./sounds/bell.ogg" preload="auto"></audio>
         <div id="menu">
           <div id="gameA"> </div>
           <div id="gameB"> </div>
@@ -44,6 +44,7 @@
             <div id="bubble"><div id="weight"></div>:<div id="checked"></div></div><div id="bubble-number"></div>
             <div id="game_info"><div id="lifes"></div><div id="score"></div></div>
             <div id="hey"></div>
+            <div id="rules"></div>
             <div id="debug"><div id="cursor-debug"></div><div id="checked-debug"></div></div>
           </div>
         
@@ -68,7 +69,7 @@
             e=o.createElement(i);r=o.getElementsByTagName(i)[0];
             e.src='https://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+            ga('create','UA-59458003-1','auto');ga('send','pageview');
         </script>
     </body>
 </html>

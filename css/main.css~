@@ -97,7 +97,7 @@ textarea {
 
 body:after{
     display:none;
-    content: url('../img/gamewatch2.jpg') url(../img/tile.png) url(../img/check.png) url(img04.png) url('../img/wang-left0.png') url('../img/wang-left1.png') url('../img/wang-right0.png') url('../img/wang-right1.png') url('../img/Game&WatchSymbol0.svg') url('../img/Game&WatchSymbol1.svg')  
+    content: url('../img/gamewatch.jpg') url(../img/tile.png) url(../img/check.png) url('../img/wang-left0.png') url('../img/wang-left1.png') url('../img/wang-right0.png') url('../img/wang-right1.png') url('../img/Game&WatchSymbol0.svg') url('../img/Game&WatchSymbol1.svg')  
 }
 
 html, body, #gamewatch {
@@ -141,7 +141,7 @@ html, body, #gamewatch {
 }
 
 #gamewatch {
-  background : #622900 no-repeat center url('../img/gamewatch2.jpg');
+  background : #622900 no-repeat center url('../img/gamewatch.jpg');
   background-size : 100%;
 }
 #ecran {
@@ -173,7 +173,7 @@ html, body, #gamewatch {
   display:inline-block;
   background-color : none;
   margin : -1px;
-
+  
   height: 100%;
   background : url('../img/tile.png');
   background-size : 100% 100%;
@@ -213,10 +213,18 @@ html, body, #gamewatch {
   background-size : 100% 100%;
 }
 .ui-dialog-titlebar {display:none}
+
 #bubble, #bubble-number, #weight, #checked, #score {
-  display : inline;
+  display    : inline;
   font-family: 'Chewy', cursive;
-  font-size : 2em;
+  font-size  : 2em;
+  text-align : center;
+}
+#rules {
+  position : absolute;
+  top: 25%;
+  left : 0%;
+  width : 100%;
 }
 input[type=checkbox] {
   /* All browsers except webkit*/
