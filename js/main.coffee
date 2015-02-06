@@ -45,8 +45,8 @@ $ ->
       effect: "explode"
       duration: 100
     position: 
-      my: "center bottom"
-      at: "center bottom"
+      my: "center top"
+      at: "center top"
       of: "#ecran"
     open: (event, ui) -> setTimeout("$('#bubble').dialog('close')",2000)
   $( "#bubble-number" ).dialog

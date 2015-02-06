@@ -60,8 +60,8 @@
         duration: 100
       },
       position: {
-        my: "center bottom",
-        at: "center bottom",
+        my: "center top",
+        at: "center top",
         of: "#ecran"
       },
       open: function(event, ui) {

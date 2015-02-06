@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Game&Wang - Emilio Posti on the bit !</title>
-        <meta name="description" content="Un jeu de conversion binaire utilisant les instructions de l'algorithme de Post, actualisé par Wang !">
+        <meta name="description" content="Un jeu de conversion binaire utilisant les axiomes de Post, actualisé par Wang !">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="wang-touch-icon" href="wang-touch-icon.png">
@@ -57,7 +57,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script type="text/javascript">window.jQuery.ui || document.write('<script src="js/vendor/jquery-ui-1.11.2.min.js"><\/script>')</script>
+        <script>window.jQuery.ui || document.write('<script src="js/vendor/jquery-ui-1.11.2.min.js"><\/script>')</script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>

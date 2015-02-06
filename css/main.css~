@@ -151,6 +151,7 @@ html, body, #gamewatch {
   width : 53%;
   height: 66%;
   text-align:center;
+  font-size  : 1.5em;
  }
 #hey {
   position: absolute;
