@@ -45,8 +45,8 @@ $ ->
       effect: "explode"
       duration: 100
     position: 
-      my: "center bottom"
-      at: "center bottom"
+      my: "center top"
+      at: "center top"
       of: "#ecran"
     open: (event, ui) -> setTimeout("$('#bubble').dialog('close')",2000)
   $( "#bubble-number" ).dialog
@@ -125,7 +125,7 @@ $ ->
           ####################################################################################################
           score = score + n
           $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
-          $( "#score" ).html("#{score}")
+          $( "#score" ).html("score:#{score}")
           bits = bits + 1
           n = Math.floor Math.pow(2,bits) * Math.random()
           $( "#bubble-number" ).html("#{n}")
@@ -196,7 +196,7 @@ $ ->
     clearInterval blink
     $( "#lifes" ).empty()
     $( "#rules").html( "")
-    $( "#score" ).html("#{score}") 
+    $( "#score" ).html("score:#{score}") 
     $( "#wang" ).remove()
     wang = "<div id='wang'></div>"
     ####################################################################################################

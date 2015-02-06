@@ -125,10 +125,10 @@ $ ->
           ####################################################################################################
           score = score + n
           $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
-          $( "#score" ).html("#{score}")
+          $( "#score" ).html("score:#{score}")
           bits = bits + 1
           n = Math.floor Math.pow(2,bits) * Math.random()
-          $( "#bubble-number" ).html("#{n}")
+          $( "#bubble-number" ).html("#{n}?")
           $( ".bridge-tile" ).remove()
           new_bridge(bits, randomize)
           i=1
@@ -196,7 +196,7 @@ $ ->
     clearInterval blink
     $( "#lifes" ).empty()
     $( "#rules").html( "")
-    $( "#score" ).html("#{score}") 
+    $( "#score" ).html("score:#{score}") 
     $( "#wang" ).remove()
     wang = "<div id='wang'></div>"
     ####################################################################################################
@@ -208,7 +208,7 @@ $ ->
       life = "<img class='life'>"
       $( "#lifes" ).append( life )
     $( "#bridge#{cursor}" ).append $( wang )
-    $( "#bubble-number" ).text("#{n}").dialog "open"
+    $( "#bubble-number" ).text("#{n}?").dialog "open"
   
   $("#gameA").click ->
     randomize = false
