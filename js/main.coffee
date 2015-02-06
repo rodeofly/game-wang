@@ -124,11 +124,11 @@ $ ->
           audioElement.play()
           ####################################################################################################
           score = score + n
+          $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
+          $( "#score" ).html("#{score}")
           bits = bits + 1
           n = Math.floor Math.pow(2,bits) * Math.random()
           $( "#bubble-number" ).html("#{n}")
-          $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
-          $( "#score" ).html("#{score}")
           $( ".bridge-tile" ).remove()
           new_bridge(bits, randomize)
           i=1

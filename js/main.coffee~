@@ -31,6 +31,7 @@ new_bridge = (tiles, randomize) ->
 # On Dom Ready !   
 ####################################################################################################
 $ ->
+  $( "#bridge-1" ).append $( wang )
   $( "#bubble" ).html( "Press Game A or B button !")
   $( "#rules").html( "Emilio Posti doit additionner !<br>Il doit activer certains chiffres,<br>Puis valider le tout, en haut de son petit arbre !<br>Attention dans le jeu B...<br>Les chiffres sont validés au hasard.<br>Paré pour des additions...on the beat !?" )   
   blink = interval 1500, -> $( "#bubble" ).dialog "open"     
@@ -122,21 +123,20 @@ $ ->
           audioElement.currentTime=0
           audioElement.play()
           ####################################################################################################
-          $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
           score = score + n
-          $( "#score" ).html("#{score}")
           bits = bits + 1
-          $( ".bridge-tile" ).remove()
-          new_bridge(bits, randomize)
           n = Math.floor Math.pow(2,bits) * Math.random()
           $( "#bubble-number" ).html("#{n}")
+          $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
+          $( "#score" ).html("#{score}")
+          $( ".bridge-tile" ).remove()
+          new_bridge(bits, randomize)
           i=1
           ringdabell = () ->
             i = i + 1
             $( "#hey" ).css
                 "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
-                "background-size" : "100%"
-            
+                "background-size" : "100%"     
           ringgit = interval 50, -> 
             ringdabell()
             audioElement = document.getElementById('bell-sound')
