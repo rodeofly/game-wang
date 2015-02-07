@@ -108,42 +108,51 @@ html, body, #gamewatch {
   padding:0;
   position:relative;
 }
-#music,#toggle-sound { 
-  z-index: 10000;
-  position: absolute;
-  display:inline;
+.sound {
+  position:absolute;
+  z-index : 1000;
+  top:0;
+  left:0;
 }
-
-#menu  {
-  z-index: 1000;
-  position: absolute;
-  right : 5vw;
-  width : 10vw;
-  height: 21vw;
-
-}
-#gameA, #gameB, #time {  
-  height: 29%;
-  border-radius : 100%;
- }
- 
-.left-side, .right-side {
-  position: absolute; 
-  width: 15vw; 
-  height: 29vw;
-  bottom: 0; 
-}
-.left-side { left: 4vw; }
-.right-side { right: 0; }
-.big-red {
-  width  : 11vw;
-  height : 12vw;
-}
-
 #gamewatch {
   background : #622900 no-repeat center url('../img/gamewatch.jpg');
   background-size : 100%;
 }
+#menu  {
+  z-index: 1000;
+  position: absolute;
+  right : 5%;
+  width : 10%;
+  height: 40%;
+
+
+}
+#gameA, #gameB, #time {  
+  height: 35%;
+  border-radius : 100%;
+  /*background-color:rgba(0,0,0,0.2);*/
+ }
+ 
+.left-side, .right-side {
+  position: absolute;
+  padding : 0;
+  width: 15%; 
+  height: 55%;
+  bottom: 0; 
+  /*background-color:rgba(0,0,0,0.2);*/
+}
+.left-side { left: 2%; }
+.right-side { right: 1%; }
+.big-red {
+  position : relative;
+  width  : 100%;
+  height : 35%;
+  margin-bottom : 13%;
+  border-radius : 100%;
+  /*background-color:rgba(0,0,0,0.2);*/
+}
+
+
 #ecran {
   position: absolute;
   top:  18%;
@@ -157,8 +166,8 @@ html, body, #gamewatch {
   position: absolute;
   top:  0%;
   right : 0%;
-  width : 10vw;
-  height: 10vw;
+  width : 200px;
+  height: 200px;
   background : none
 }
 #bridge {
@@ -168,35 +177,37 @@ html, body, #gamewatch {
   bottom: 42%;
   left:4%;
   font-size : 2em;
+  /*background-color : rgba(0,0,0,0.2);*/
 }
 .bridge-tile {
   position : relative;
   display:inline-block;
   background-color : none;
   margin : -1px;
-  
+  v-align:top;
   height: 100%;
   background : url('../img/tile.png');
   background-size : 100% 100%;
   font-weight: bold;
   color : white;
+  background-color : rgba(0,0,0,0.2);*
 }  
 #bridge-1 {
   position: absolute;
   display:inline-block;
   width : 20%;
-  height : 8%;
-  left:75%;
-  bottom: 65%;
+  height : 10%;
+  right:5%;
+  top: 35%;
   background : url('../img/check.png');
   background-size : 100% 100%;
 
 }
 #wang {
-  position : relative;
-  width : 3vw;
-  height : 3vw;
-  bottom : 100%;
+  position : absolute;
+  width : 75px;
+  height : 75px;
+  top : -55px;;
   left: 50%;
   background : no-repeat center url('../img/wang-left0.png');
   background-size : 100% 100%;
@@ -208,8 +219,8 @@ html, body, #gamewatch {
 }
 .life {
   position : relative;
-  width : 3vw;
-  height : 3vw;
+  width : 35px;
+  height : 35px;
   background : no-repeat center url('../img/wang-left0.png');
   background-size : 100% 100%;
 }
