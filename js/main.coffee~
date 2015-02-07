@@ -121,6 +121,7 @@ $ ->
           ####################################################################################################
           audioElement = document.getElementById('win-sound')
           audioElement.currentTime=0
+          audioElement.load()
           audioElement.play()
           ####################################################################################################
           score = score + n
@@ -128,7 +129,7 @@ $ ->
           $( "#score" ).html("score:#{score}")
           bits = bits + 1
           n = Math.floor Math.pow(2,bits) * Math.random()
-          $( "#bubble-number" ).html("#{n}")
+          $( "#bubble-number" ).html("#{n}?")
           $( ".bridge-tile" ).remove()
           new_bridge(bits, randomize)
           i=1
@@ -208,7 +209,7 @@ $ ->
       life = "<img class='life'>"
       $( "#lifes" ).append( life )
     $( "#bridge#{cursor}" ).append $( wang )
-    $( "#bubble-number" ).text("#{n}").dialog "open"
+    $( "#bubble-number" ).text("#{n}?").dialog "open"
   
   $("#gameA").click ->
     randomize = false

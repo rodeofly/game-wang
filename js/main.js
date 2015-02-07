@@ -152,6 +152,7 @@
           if (n === parseInt(binary, 2)) {
             audioElement = document.getElementById('win-sound');
             audioElement.currentTime = 0;
+            audioElement.load();
             audioElement.play();
             score = score + n;
             $("#bubble").html("Yeah ! " + binary + " is " + n + " !").dialog("open");
@@ -173,6 +174,7 @@
               ringdabell();
               audioElement = document.getElementById('bell-sound');
               audioElement.currentTime = 0;
+              audioElement.load();
               return audioElement.play();
             });
             return delay(1000, function() {
@@ -184,6 +186,7 @@
           } else {
             audioElement = document.getElementById('fail-sound');
             audioElement.currentTime = 0;
+            audioElement.load();
             audioElement.play();
             $("#bubble").html("Raah ! " + binary + " is not " + n + "<br>hint:" + (n.toString(2))).dialog("open");
             lifes = lifes - 1;
@@ -198,6 +201,7 @@
         default:
           audioElement = document.getElementById('toggle-sound');
           audioElement.currentTime = 0;
+          audioElement.load();
           audioElement.play();
           $("#bridge" + cursor).data("checked", !$("#bridge" + cursor).data("checked"));
           $("#bridge" + cursor + " input").prop('checked', function(i, v) {
