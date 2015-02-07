@@ -121,7 +121,6 @@ $ ->
           ####################################################################################################
           audioElement = document.getElementById('win-sound')
           audioElement.currentTime=0
-          audioElement.load()
           audioElement.play()
           ####################################################################################################
           score = score + n
@@ -142,7 +141,6 @@ $ ->
             ringdabell()
             audioElement = document.getElementById('bell-sound')
             audioElement.currentTime=0
-            audioElement.load()
             audioElement.play()
           delay 1000, -> 
             clearInterval ringgit
@@ -152,7 +150,6 @@ $ ->
           ####################################################################################################
           audioElement = document.getElementById('fail-sound')
           audioElement.currentTime=0
-          audioElement.load()
           audioElement.play()
           ####################################################################################################
           $( "#bubble" ).html("Raah ! #{binary} is not #{n}<br>hint:#{n.toString(2)}").dialog "open"
@@ -165,7 +162,6 @@ $ ->
       else
         audioElement = document.getElementById('toggle-sound')
         audioElement.currentTime=0
-        audioElement.load()
         audioElement.play()
         $( "#bridge#{cursor}" ).data "checked", not $( "#bridge#{cursor}" ).data("checked")
         $( "#bridge#{cursor} input" ).prop 'checked', (i, v) -> !v
