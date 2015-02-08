@@ -188,7 +188,7 @@
             audioElement.currentTime = 0;
             audioElement.load();
             audioElement.play();
-            $("#bubble").html("Raah ! " + binary + " is not " + n + "<br>hint:" + (n.toString(2))).dialog("open");
+            $("#bubble").html("Raah ! " + binary + " is not " + n + " - hint:" + (n.toString(2))).dialog("open");
             lifes = lifes - 1;
             $("#lifes div:first").remove();
             if (!lifes) {
