@@ -11,7 +11,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/main-no-sound.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -24,23 +24,6 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <audio id="music" class="sound"   preload="auto" autoplay loop controls>
-          <source  src="http://freedownloads.last.fm/download/295028163/Closer%2B%2528Bitpop%2BMix%2529.mp3"  type="audio/mpeg"><p>Your browser does not support the audio element. <a href="./index-no-sound.html">Please click here for no-sound game</a> (and please change browser this one su#@s !)</p>
-        </audio>
-        <audio id="toggle-sound" class="sound"  preload="auto">
-          <source  src="./sounds/toggle.ogg" type="audio/ogg">
-        </audio>          
-        <audio id="win-sound" class="sound"  preload="auto">
-          <source  src="./sounds/win.ogg" type="audio/ogg">
-        </audio>          
-        <audio id="fail-sound" class="sound"  preload="auto">
-          <source  src="./sounds/fail.ogg" type="audio/ogg">
-        </audio>          
-        <audio id="bell-sound" class="sound"  preload="auto">
-          <source  src="./sounds/bell.ogg" type="audio/ogg">
-        </audio>
-        
-        
         <div id="gamewatch">
           <div id="menu">
             <div id="gameA"> </div>
