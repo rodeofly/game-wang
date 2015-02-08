@@ -130,7 +130,7 @@ $ ->
           ringdabell = () ->
             i = i + 1
             $( "#hey" ).css
-                "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
+                "background" : "url('./img/Game&WatchSymbol#{i%2}.png')"
                 "background-size" : "100%"     
           ringgit = interval 50, -> 
             ringdabell()
