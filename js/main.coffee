@@ -157,7 +157,7 @@ $ ->
           ####################################################################################################
           $( "#bubble" ).html("Raah ! #{binary} is not #{n}<br>hint:#{n.toString(2)}").dialog "open"
           lifes = lifes - 1
-          $( "#lifes img:first" ).remove()         
+          $( "#lifes div:first" ).remove()         
           if not lifes
             alert "game over"
             $( ".bridge-tile").remove()
@@ -209,7 +209,7 @@ $ ->
     $( ".bridge-tile" ).remove()
     new_bridge(bits,randomize)
     for i in [1..lifes]
-      life = "<img class='life'>"
+      life = "<div class='life'> </div>"
       $( "#lifes" ).append( life )
     $( "#bridge#{cursor}" ).append $( wang )
     $( "#bubble-number" ).text("#{n}?").dialog "open"
