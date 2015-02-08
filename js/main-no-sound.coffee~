@@ -118,12 +118,6 @@ $ ->
       when -1
         binary = get_binary()
         if n is parseInt binary, 2
-          ####################################################################################################
-          audioElement = document.getElementById('win-sound')
-          audioElement.currentTime=0
-          audioElement.load()
-          audioElement.play()
-          ####################################################################################################
           score = score + n
           $( "#bubble" ).html("Yeah ! #{binary} is #{n} !").dialog "open"
           $( "#score" ).html("score:#{score}")
@@ -140,21 +134,11 @@ $ ->
                 "background-size" : "100%"     
           ringgit = interval 50, -> 
             ringdabell()
-            audioElement = document.getElementById('bell-sound')
-            audioElement.currentTime=0
-            audioElement.load()
-            audioElement.play()
           delay 1000, -> 
             clearInterval ringgit
             $( "#hey" ).css
               "background" : "none"
         else
-          ####################################################################################################
-          audioElement = document.getElementById('fail-sound')
-          audioElement.currentTime=0
-          audioElement.load()
-          audioElement.play()
-          ####################################################################################################
           $( "#bubble" ).html("Raah ! #{binary} is not #{n}<br>hint:#{n.toString(2)}").dialog "open"
           lifes = lifes - 1
           $( "#lifes img:first" ).remove()         
@@ -163,10 +147,6 @@ $ ->
             $( ".bridge-tile").remove()
             go_veille()
       else
-        audioElement = document.getElementById('toggle-sound')
-        audioElement.currentTime=0
-        audioElement.load()
-        audioElement.play()
         $( "#bridge#{cursor}" ).data "checked", not $( "#bridge#{cursor}" ).data("checked")
         $( "#bridge#{cursor} input" ).prop 'checked', (i, v) -> !v
         $( "#checked-debug").text( "checked:#{$( "#bridge#{cursor}" ).data( "checked" )}" ) if debug
@@ -190,8 +170,6 @@ $ ->
   ####################################################################################################
   # Game Start !
   ####################################################################################################    
-
-  
   gogame = () ->
     score = 0
     lifes = 3

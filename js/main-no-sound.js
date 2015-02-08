@@ -162,7 +162,7 @@
             ringdabell = function() {
               i = i + 1;
               return $("#hey").css({
-                "background": "url('./img/Game&WatchSymbol" + (i % 2) + ".svg')",
+                "background": "url('./img/Game&WatchSymbol" + (i % 2) + ".png')",
                 "background-size": "100%"
               });
             };
