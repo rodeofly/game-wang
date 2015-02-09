@@ -24,21 +24,12 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <audio id="music" class="sound" src="http://freedownloads.last.fm/download/295028163/Closer%2B%2528Bitpop%2BMix%2529.mp3"  preload="auto" autoplay loop controls><p>Your browser does not support the audio element. <a href="./index-no-sound.html">Please click here for no-sound game</a> (and please change browser this one su#@s !)</p>
+        <audio id="music" src="http://freedownloads.last.fm/download/295028163/Closer%2B%2528Bitpop%2BMix%2529.mp3"  preload="auto" autoplay loop controls>
+          <p>Your browser does not support the audio element. Throw it !</p>
         </audio>
-        <audio id="toggle-sound" class="sound" src="./sounds/toggle.ogg" type="audio/ogg" preload="auto">      
-        </audio>          
-        <audio id="win-sound" class="sound"  preload="auto">
-          <source  src="./sounds/win.ogg" type="audio/ogg">
-        </audio>          
-        <audio id="fail-sound" class="sound"  preload="auto">
-          <source  src="./sounds/fail.ogg" type="audio/ogg">
-        </audio>          
-        <audio id="bell-sound" class="sound"  preload="auto">
-          <source  src="./sounds/bell.ogg" type="audio/ogg">
-        </audio>
-        
-        
+        <audio id="toggle-sound" src="./sounds/toggle.ogg" type="audio/ogg" preload="auto"></audio>          
+        <audio id="fail-sound" src="./sounds/fail.ogg" type="audio/ogg" preload="auto"></audio>          
+        <audio id="bell-sound" src="./sounds/bell.ogg" type="audio/ogg" preload="auto"></audio>
         <div id="gamewatch">
           <div id="menu">
             <div id="gameA"> </div>
