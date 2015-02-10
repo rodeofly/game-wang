@@ -27,8 +27,10 @@ checkit_baby = (timer) ->
     $( "#hey" ).css
         "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
         "background-size" : "100%"     
-    if Modernizr.audio.ogg?
+    try
       play_diz( "bell-sound" )
+    finally
+      
   delay timer, -> 
     clearInterval ringgit
     $( "#hey" ).css {"background" : "none"}
@@ -167,8 +169,6 @@ $ ->
           bust_a_move(1500)
         else
           ####################################################################################################
-          if Modernizr.audio.ogg?
-            play_diz( "fail-sound" )
           $( "#bubble" ).html("Oh no ! It should be #{n.toString(2)}<span style='font-size:0.5em;'>bin</span> !").dialog "open"
           $( "#wang" ).css( {background : "no-repeat center url('./img/wang-sorry.png')", backgroundSize : "100%" } )
           lifes = lifes - 1
@@ -180,19 +180,20 @@ $ ->
             wang_dance = interval 250, ->
               $( "#wang" ).css
                 "background" : "url('./img/#{files[Math.floor 6 * Math.random()]}.png')"
-                "background-size" : "100%"   
-          ####################################################################################################
-      else
-        if Modernizr.audio.ogg?
+                "background-size" : "100%"
           try
-            play_diz( "toggle-sound" )
+            play_diz( "fail-sound" )
           catch error
             checkit_baby(250)
-          
+          ####################################################################################################
+      else
         $( "#bridge#{cursor}" ).data "checked", not $( "#bridge#{cursor}" ).data("checked")
         $( "#bridge#{cursor} input" ).prop 'checked', (i, v) -> !v
         $( "#checked-debug").text( "checked:#{$( "#bridge#{cursor}" ).data( "checked" )}" ) if debug
-
+        try
+          play_diz( "toggle-sound" )
+        catch error
+          checkit_baby(250)
   ####################################################################################################
   # Post - Wang axiomes !
   #################################################################################################### 

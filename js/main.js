@@ -34,8 +34,10 @@
         "background": "url('./img/Game&WatchSymbol" + (i % 2) + ".svg')",
         "background-size": "100%"
       });
-      if (Modernizr.audio.ogg != null) {
+      try {
         return play_diz("bell-sound");
+      } finally {
+
       }
     });
     return delay(timer, function() {
@@ -200,9 +202,6 @@
             checkit_baby(1500);
             return bust_a_move(1500);
           } else {
-            if (Modernizr.audio.ogg != null) {
-              play_diz("fail-sound");
-            }
             $("#bubble").html("Oh no ! It should be " + (n.toString(2)) + "<span style='font-size:0.5em;'>bin</span> !").dialog("open");
             $("#wang").css({
               background: "no-repeat center url('./img/wang-sorry.png')",
@@ -216,30 +215,34 @@
               blink = interval(1500, function() {
                 return $("#bubble").html("Press Game A or B button ! ").dialog("open");
               });
-              return wang_dance = interval(250, function() {
+              wang_dance = interval(250, function() {
                 return $("#wang").css({
                   "background": "url('./img/" + files[Math.floor(6 * Math.random())] + ".png')",
                   "background-size": "100%"
                 });
               });
             }
+            try {
+              return play_diz("fail-sound");
+            } catch (_error) {
+              error = _error;
+              return checkit_baby(250);
+            }
           }
           break;
         default:
-          if (Modernizr.audio.ogg != null) {
-            try {
-              play_diz("toggle-sound");
-            } catch (_error) {
-              error = _error;
-              checkit_baby(250);
-            }
-          }
           $("#bridge" + cursor).data("checked", !$("#bridge" + cursor).data("checked"));
           $("#bridge" + cursor + " input").prop('checked', function(i, v) {
             return !v;
           });
           if (debug) {
-            return $("#checked-debug").text("checked:" + ($("#bridge" + cursor).data("checked")));
+            $("#checked-debug").text("checked:" + ($("#bridge" + cursor).data("checked")));
+          }
+          try {
+            return play_diz("toggle-sound");
+          } catch (_error) {
+            error = _error;
+            return checkit_baby(250);
           }
       }
     };
