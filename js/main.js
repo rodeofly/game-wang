@@ -21,8 +21,8 @@
   play_diz = function(audio_id) {
     var audioElement;
     audioElement = document.getElementById(audio_id);
-    audioElement.currentTime = 0;
-    return audioElement.play();
+    audioElement.play();
+    return audioElement.currentTime = 0;
   };
 
   checkit_baby = function(timer) {
@@ -102,7 +102,13 @@
   };
 
   $(function() {
-    var blink, gogame, is_marked, move, toggle, wang_dance;
+    var audio, blink, gogame, is_marked, move, name, toggle, wang_dance, _i, _len, _ref1;
+    _ref1 = ["bell", "fail", "toggle"];
+    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+      name = _ref1[_i];
+      audio = $("#" + name + "-sound");
+      audio.attr('src', Modernizr.audio.ogg ? "./sounds/" + name + ".ogg" : Modernizr.audio.mp3 ? "./sounds/" + name + ".mp3" : "./sounds/" + name + ".wav");
+    }
     $("#bubble").dialog({
       autoOpen: false,
       width: 'auto',
@@ -262,16 +268,16 @@
       return alert("Patience mon jeune Padawan !");
     });
     gogame = function() {
-      var i, life, _i, _ref1;
+      var i, life, _j, _ref2;
       clearInterval(blink);
       clearInterval(wang_dance);
       $("#lifes").empty();
       $("#rules").html("");
-      _ref1 = [-1, 0, 3, 1], cursor = _ref1[0], score = _ref1[1], lifes = _ref1[2], bits = _ref1[3];
+      _ref2 = [-1, 0, 3, 1], cursor = _ref2[0], score = _ref2[1], lifes = _ref2[2], bits = _ref2[3];
       n = Math.floor(Math.pow(2, bits) * Math.random());
       $("#score").html("score:" + score);
       new_bridge(bits, randomize);
-      for (i = _i = 1; 1 <= lifes ? _i <= lifes : _i >= lifes; i = 1 <= lifes ? ++_i : --_i) {
+      for (i = _j = 1; 1 <= lifes ? _j <= lifes : _j >= lifes; i = 1 <= lifes ? ++_j : --_j) {
         life = "<div class='life'> </div>";
         $("#lifes").append(life);
       }

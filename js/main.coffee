@@ -15,8 +15,9 @@ interval = (ms, func) -> setInterval func, ms
 ####################################################################################################   
 play_diz = ( audio_id ) ->
   audioElement = document.getElementById( audio_id )
-  audioElement.currentTime=0
   audioElement.play()
+  audioElement.currentTime=0
+
 ####################################################################################################
 # Animation clochette
 ####################################################################################################   
@@ -80,6 +81,9 @@ new_bridge = (tiles, randomize) ->
 # On Dom Ready !   
 ####################################################################################################
 $ ->
+  for name in ["bell","fail","toggle"]
+    audio = $( "##{name}-sound" )
+    audio.attr 'src', if Modernizr.audio.ogg then "./sounds/#{name}.ogg" else if Modernizr.audio.mp3 then "./sounds/#{name}.mp3" else "./sounds/#{name}.wav"
   ####################################################################################################
   # Configuration des boites de dialogues
   ####################################################################################################
