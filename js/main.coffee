@@ -16,21 +16,18 @@ interval = (ms, func) -> setInterval func, ms
 play_diz = ( audio_id ) ->
   audioElement = document.getElementById( audio_id )
   audioElement.play()
-  audioElement.currentTime=0
+  audioElement.currentTime = 0
 
 ####################################################################################################
 # Animation clochette
 ####################################################################################################   
 checkit_baby = (timer) ->
   i=1
-  ringgit = interval 50, -> 
+  ringgit = interval 100, -> 
     i = i + 1
     $( "#hey" ).css
         "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
         "background-size" : "100%"     
-    try
-      play_diz( "bell-sound" )
-    finally
       
   delay timer, -> 
     clearInterval ringgit
@@ -169,8 +166,11 @@ $ ->
           n = Math.floor Math.pow(2,bits) * Math.random()
           $( "#bubble-number" ).html("Get #{n}<span style='font-size:0.5em;'>dec</span> !").dialog "open"
           new_bridge(bits, randomize)
-          checkit_baby(1500)
-          bust_a_move(1500)
+          try
+            play_diz( "bell-sound" )
+          finally
+            checkit_baby(1500)
+            bust_a_move(1500)
         else
           ####################################################################################################
           $( "#bubble" ).html("Oh no ! It should be #{n.toString(2)}<span style='font-size:0.5em;'>bin</span> !").dialog "open"

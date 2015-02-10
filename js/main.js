@@ -28,17 +28,12 @@
   checkit_baby = function(timer) {
     var i, ringgit;
     i = 1;
-    ringgit = interval(50, function() {
+    ringgit = interval(100, function() {
       i = i + 1;
-      $("#hey").css({
+      return $("#hey").css({
         "background": "url('./img/Game&WatchSymbol" + (i % 2) + ".svg')",
         "background-size": "100%"
       });
-      try {
-        return play_diz("bell-sound");
-      } finally {
-
-      }
     });
     return delay(timer, function() {
       clearInterval(ringgit);
@@ -205,8 +200,12 @@
             n = Math.floor(Math.pow(2, bits) * Math.random());
             $("#bubble-number").html("Get " + n + "<span style='font-size:0.5em;'>dec</span> !").dialog("open");
             new_bridge(bits, randomize);
-            checkit_baby(1500);
-            return bust_a_move(1500);
+            try {
+              return play_diz("bell-sound");
+            } finally {
+              checkit_baby(1500);
+              bust_a_move(1500);
+            }
           } else {
             $("#bubble").html("Oh no ! It should be " + (n.toString(2)) + "<span style='font-size:0.5em;'>bin</span> !").dialog("open");
             $("#wang").css({
