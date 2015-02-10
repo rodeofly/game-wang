@@ -184,7 +184,7 @@
       return $("#bubble").dialog("open");
     };
     toggle = function() {
-      var binary;
+      var binary, error;
       $("#bubble").dialog("close");
       switch (cursor) {
         case -1:
@@ -227,9 +227,12 @@
           break;
         default:
           if (Modernizr.audio.ogg != null) {
-            play_diz("toggle-sound");
-          } else {
-            checkit_baby(250);
+            try {
+              play_diz("toggle-sound");
+            } catch (_error) {
+              error = _error;
+              checkit_baby(250);
+            }
           }
           $("#bridge" + cursor).data("checked", !$("#bridge" + cursor).data("checked"));
           $("#bridge" + cursor + " input").prop('checked', function(i, v) {

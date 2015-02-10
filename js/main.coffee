@@ -184,13 +184,15 @@ $ ->
           ####################################################################################################
       else
         if Modernizr.audio.ogg?
-          play_diz( "toggle-sound" )
-        else
-          checkit_baby(250)
+          try
+            play_diz( "toggle-sound" )
+          catch error
+            checkit_baby(250)
+          
         $( "#bridge#{cursor}" ).data "checked", not $( "#bridge#{cursor}" ).data("checked")
         $( "#bridge#{cursor} input" ).prop 'checked', (i, v) -> !v
         $( "#checked-debug").text( "checked:#{$( "#bridge#{cursor}" ).data( "checked" )}" ) if debug
-  
+
   ####################################################################################################
   # Post - Wang axiomes !
   #################################################################################################### 
