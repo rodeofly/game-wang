@@ -76,21 +76,26 @@
     $(".bridge-tile").remove();
     cursor = -1;
     $("#bridge-1").append($(wang));
-    return $("#rules").html("Emilio Posti doit additionner.<br>Il doit activer certains chiffres,<br>Puis valider le tout, en haut de son petit arbre !<br>Attention dans le jeu B...<br>Les chiffres sont validés au hasard.<br>Paré pour des additions...on the beat !?");
+    return $("#rules").html("<br><br><br>Emilio Posti doit trouver un nombre en additionnant certains chiffres.<br>Puis valider le tout, en haut de son petit arbre !<br>[?] permet de savoir si un chiffre est selectionné ou d'avoir une vue d'ensemble depuis le petit arbre !<br>[V] permet de (dé)selectionner un chiffre.<br>Attention dans le jeu B les chiffres sont validés au hasard.<br>Paré pour des additions...on the beat !?");
   };
 
   new_bridge = function(tiles, randomize) {
-    var aTile, checked, i, r, weight, _i, _ref1, _results;
+    var aTile, checked, easy, i, r, weight, _i, _ref1, _results;
     r = ['false', 'true'];
     $(".bridge-tile").remove();
     _results = [];
     for (i = _i = _ref1 = tiles - 1; _ref1 <= 0 ? _i <= 0 : _i >= 0; i = _ref1 <= 0 ? ++_i : --_i) {
       weight = Math.pow(2, i);
       checked = randomize ? Math.floor(2 * Math.random()) : 0;
-      aTile = "<div id='bridge" + i + "' class='bridge-tile' data-weight='" + weight + "' data-checked='" + r[checked] + "'>" + weight + "</div>";
+      easy = "";
+      if (!randomize) {
+        easy = "<input type='checkbox' " + checked + " disabled/>";
+      }
+      aTile = "<div id='bridge" + i + "' class='bridge-tile' data-weight='" + weight + "' data-checked='" + r[checked] + "'><span class='bridge-weight'>" + weight + "</span>" + easy + "</div>";
       _results.push($(aTile).appendTo($("#bridge")).css({
         width: $("#bridge").width() / tiles,
-        height: '100%'
+        height: '100%',
+        top: "-10*" + i + "px"
       }));
     }
     return _results;
@@ -203,8 +208,8 @@
             try {
               return play_diz("bell-sound");
             } finally {
-              checkit_baby(1500);
-              bust_a_move(1500);
+              checkit_baby(1000);
+              bust_a_move(1000);
             }
           } else {
             $("#bubble").html("Oh no ! It should be " + (n.toString(2)) + "<span style='font-size:0.5em;'>bin</span> !").dialog("open");
@@ -270,6 +275,9 @@
       var i, life, _j, _ref2;
       clearInterval(blink);
       clearInterval(wang_dance);
+      $("#wang").remove();
+      cursor = -1;
+      $("#bridge-1").append($(wang));
       $("#lifes").empty();
       $("#rules").html("");
       _ref2 = [-1, 0, 3, 1], cursor = _ref2[0], score = _ref2[1], lifes = _ref2[2], bits = _ref2[3];

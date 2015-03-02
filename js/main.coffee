@@ -27,11 +27,11 @@ checkit_baby = (timer) ->
     i = i + 1
     $( "#hey" ).css
         "background" : "url('./img/Game&WatchSymbol#{i%2}.svg')"
-        "background-size" : "100%"     
-      
+        "background-size" : "100%"          
   delay timer, -> 
     clearInterval ringgit
     $( "#hey" ).css {"background" : "none"}
+    
 bust_a_move = (timer) ->
   j=1       
   bustit = interval 200, -> 
@@ -60,7 +60,7 @@ go_veille = () ->
   $( ".bridge-tile").remove()
   cursor = -1
   $( "#bridge-1" ).append $( wang )
-  $( "#rules").html( "Emilio Posti doit additionner.<br>Il doit activer certains chiffres,<br>Puis valider le tout, en haut de son petit arbre !<br>Attention dans le jeu B...<br>Les chiffres sont validés au hasard.<br>Paré pour des additions...on the beat !?" )
+  $( "#rules").html( "<br><br><br>Emilio Posti doit trouver un nombre en additionnant certains chiffres.<br>Puis valider le tout, en haut de son petit arbre !<br>[?] permet de savoir si un chiffre est selectionné ou d'avoir une vue d'ensemble depuis le petit arbre !<br>[V] permet de (dé)selectionner un chiffre.<br>Attention dans le jeu B les chiffres sont validés au hasard.<br>Paré pour des additions...on the beat !?" )
 ####################################################################################################
 # Construction du pont avec des chiffres activés ou non en fonction du jeu A ou B
 ####################################################################################################
@@ -70,10 +70,14 @@ new_bridge = (tiles, randomize) ->
     for i in [tiles-1..0]
       weight = Math.pow(2, i)
       checked = if randomize then Math.floor 2*Math.random() else 0
-      aTile  = "<div id='bridge#{i}' class='bridge-tile' data-weight='#{weight}' data-checked='#{r[checked]}'>#{weight}</div>"
+      easy = ""
+      if not randomize
+        easy ="<input type='checkbox' #{checked} disabled/>"
+      aTile  = "<div id='bridge#{i}' class='bridge-tile' data-weight='#{weight}' data-checked='#{r[checked]}'><span class='bridge-weight'>#{weight}</span>#{easy}</div>"
       $( aTile ).appendTo( $( "#bridge" )).css
         width : $( "#bridge" ).width() / tiles
         height : '100%'      
+        top : "-10*#{i}px"
 ####################################################################################################
 # On Dom Ready !   
 ####################################################################################################
@@ -169,8 +173,8 @@ $ ->
           try
             play_diz( "bell-sound" )
           finally
-            checkit_baby(1500)
-            bust_a_move(1500)
+            checkit_baby(1000)
+            bust_a_move(1000)
         else
           ####################################################################################################
           $( "#bubble" ).html("Oh no ! It should be #{n.toString(2)}<span style='font-size:0.5em;'>bin</span> !").dialog "open"
@@ -220,6 +224,10 @@ $ ->
   gogame = () ->
     clearInterval blink
     clearInterval wang_dance
+    $( "#wang" ).remove()
+
+    cursor = -1
+    $( "#bridge-1" ).append $( wang )
     $( "#lifes" ).empty()
     $( "#rules").html( "")
     [cursor, score, lifes, bits] = [-1, 0, 3, 1]

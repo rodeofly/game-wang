@@ -97,7 +97,7 @@ textarea {
 
 body:after{
     display:none;
-    content: url('../img/gamewatch.jpg') url(../img/tile.png) url(../img/check.png) url('../img/wang-left0.png') url('../img/wang-left1.png') url('../img/wang-right0.png') url('../img/wang-right1.png') url('../img/Game&WatchSymbol0.svg') url('../img/Game&WatchSymbol1.svg')  
+    content: url('../img/gamewatch.jpg') url(../img/tile.png) url(../img/check.png) url('../img/wang-left0.png') url('../img/wang-left1.png') url('../img/wang-right0.png') url('../img/wang-right1.png') url('../img/wang-dance0.png') url('../img/wang-dance1.png') url('../img/wang-sorry.png')url('../img/Game&WatchSymbol0.svg') url('../img/Game&WatchSymbol1.svg')  
 }
 
 html, body, #gamewatch {
@@ -178,14 +178,14 @@ audio {
   height : 10%;
   bottom: 42%;
   left:4%;
-  font-size : 2em;
+
   /*background-color : rgba(0,0,0,0.2);*/
 }
 .bridge-tile {
   position : relative;
   display:inline-block;
   background-color : none;
-  
+  margin : -1%;
   v-align:top;
   height: 100%;
   background : url('../img/tile.png');
@@ -196,6 +196,11 @@ audio {
   /*background-color : rgba(0,0,0,0.2);*/
 
 }  
+.bridge-weight{
+  font-size : 2em;
+  border : dashed black 2px; 
+  padding : 0.25em; 
+}
 #bridge-1 {
   position: absolute;
   display:inline-block;
@@ -213,7 +218,7 @@ audio {
   width : 75px;
   height : 75px;
   top : -55px;;
-  left: 50%;
+  left: 20%;
   background : no-repeat center url('../img/wang-left0.png');
   background-size : 100% 100%;
 }
