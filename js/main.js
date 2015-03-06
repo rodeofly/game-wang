@@ -103,6 +103,13 @@
 
   $(function() {
     var audio, blink, gogame, is_marked, move, name, toggle, wang_dance, _i, _len, _ref1;
+    $(".big-red, #gameA, #gameB").click(function() {
+      return $(this).animate({
+        backgroundColor: "rgba(0,0,0,0.5)"
+      }, 500).animate({
+        backgroundColor: "transparent"
+      }, 500);
+    });
     _ref1 = ["bell", "fail", "toggle"];
     for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
       name = _ref1[_i];

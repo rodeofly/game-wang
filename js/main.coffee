@@ -82,6 +82,10 @@ new_bridge = (tiles, randomize) ->
 # On Dom Ready !   
 ####################################################################################################
 $ ->
+  $( ".big-red, #gameA, #gameB" ).click ->
+    $( this )
+      .animate( { backgroundColor: "rgba(0,0,0,0.5)" }, 500 )
+      .animate( { backgroundColor: "transparent" }, 500 );
   for name in ["bell","fail","toggle"]
     audio = $( "##{name}-sound" )
     audio.attr 'src', if Modernizr.audio.ogg then "./sounds/#{name}.ogg" else if Modernizr.audio.mp3 then "./sounds/#{name}.mp3" else "./sounds/#{name}.wav"
