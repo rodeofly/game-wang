@@ -117,8 +117,8 @@
         duration: 100
       },
       position: {
-        my: "right bottom",
-        at: "left top",
+        my: "right top",
+        at: "left bottom",
         of: "#wang"
       },
       open: function(event, ui) {

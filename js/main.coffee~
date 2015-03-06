@@ -173,8 +173,8 @@ $ ->
           try
             play_diz( "bell-sound" )
           finally
-            checkit_baby(1500)
-            bust_a_move(1500)
+            checkit_baby(1000)
+            bust_a_move(1000)
         else
           ####################################################################################################
           $( "#bubble" ).html("Oh no ! It should be #{n.toString(2)}<span style='font-size:0.5em;'>bin</span> !").dialog "open"

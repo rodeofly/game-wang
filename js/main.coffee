@@ -95,8 +95,8 @@ $ ->
       effect: "explode"
       duration: 100
     position: 
-      my: "right bottom"
-      at: "left top"
+      my: "right top"
+      at: "left bottom"
       of: "#wang"
     open: (event, ui) -> setTimeout("$('#bubble').dialog('close')",2000)
   $( "#bubble-number" ).dialog
